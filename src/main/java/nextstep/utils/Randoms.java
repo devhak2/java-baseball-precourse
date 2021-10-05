@@ -51,7 +51,7 @@ public class Randoms {
 	 */
 	public static List<Integer> pickUniqueNumbersInRange(int num, final int startInclusive, final int endInclusive) {
 		Set<Integer> numbers = new HashSet<>();
-		while (numbers.size() < 3) {
+		while (numbers.size() < num) {
 			numbers.add(pickNumberInRange(startInclusive, endInclusive));
 		}
 		return new ArrayList<>(numbers);
