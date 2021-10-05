@@ -21,6 +21,24 @@ public class Baseball {
 		numbers.addAll(Randoms.pickUniqueNumbersInRange(num, 1, 9));
 	}
 
+	public int[] calculate(List<Integer> userInput) {
+		int[] result = new int[2];
+		for (int i = 0; i < numbers.size(); i++) {
+			accumulateResult(result, i, userInput.indexOf(numbers.get(i)));
+		}
+		return result;
+	}
+
+	private void accumulateResult(int[] result, int loopCount, int index) {
+		if (loopCount == index) {
+			result[0]++;
+		}
+
+		if (index >= 0) {
+			result[1]++;
+		}
+	}
+
 	private List<Integer> numbers;
 
 	private static class LazyHolder {
