@@ -32,6 +32,7 @@ public class Baseball {
 	private void accumulateResult(int[] result, int loopCount, int index) {
 		if (loopCount == index) {
 			result[0]++;
+			return;
 		}
 
 		if (index >= 0) {
