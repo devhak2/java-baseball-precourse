@@ -1,10 +1,6 @@
 package nextstep.utils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * @author Jung YoonSung <ybook2012@gmail.com>, Kim HyeonSik <hsik0225@gmail.com>, Kim JuWon <kjw11077naver@gmail.com>
@@ -35,26 +31,6 @@ public class Randoms {
 	public static int pickNumberInRange(final int startInclusive, final int endInclusive) {
 		validateRange(startInclusive, endInclusive);
 		return startInclusive + RANDOM.nextInt(endInclusive - startInclusive + 1);
-	}
-
-	/**
-	 * 범위내의 랜덤한 숫자를 중복되는 것 없이 num개를 반환하는 기능을 수행한다. List 를 반환한다.
-	 * <p>
-	 * 시작값에서 끝값 사이의 숫자를 중복없이 num개를 랜덤하게 생성하여 반환한다.
-	 * </p>
-	 *
-	 * @param num 랜덤 숫자를 생성할 갯수
-	 * @param startInclusive 범위의 시작값, 리턴 범위내에 포함된다.
-	 * @param endInclusive   범위의 끝값, 리턴 범위내에 포함된다.
-	 * @return 지정한 범위 안의 랜덤 숫자 중복없이 num개를 담고 있는 List
-	 * @throws IllegalArgumentException 스택오버플로우가 터질 수 있는 경우, 발생한다. 잘못된 범위가 입력되는 경우, 발생한다.
-	 */
-	public static List<Integer> pickUniqueNumbersInRange(int num, final int startInclusive, final int endInclusive) {
-		Set<Integer> numbers = new HashSet<>();
-		while (numbers.size() < num) {
-			numbers.add(pickNumberInRange(startInclusive, endInclusive));
-		}
-		return new ArrayList<>(numbers);
 	}
 
 	private static void validateRange(final int startInclusive, final int endInclusive) {

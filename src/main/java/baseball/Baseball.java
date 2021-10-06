@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import nextstep.utils.Randoms;
 
@@ -18,7 +20,7 @@ public class Baseball {
 		if (numbers.size() != 0) {
 			numbers.clear();
 		}
-		numbers.addAll(Randoms.pickUniqueNumbersInRange(num, 1, 9));
+		numbers.addAll(pickUniqueNumbersInRange(num, 1, 9));
 	}
 
 	public int[] calculate(List<Integer> userInput) {
@@ -27,6 +29,14 @@ public class Baseball {
 			accumulateResult(result, i, userInput.indexOf(numbers.get(i)));
 		}
 		return result;
+	}
+
+	private List<Integer> pickUniqueNumbersInRange(int num, final int startInclusive, final int endInclusive) {
+		Set<Integer> numbers = new LinkedHashSet<>();
+		while (numbers.size() < num) {
+			numbers.add(Randoms.pickNumberInRange(startInclusive, endInclusive));
+		}
+		return new ArrayList<>(numbers);
 	}
 
 	private void accumulateResult(int[] result, int loopCount, int index) {
